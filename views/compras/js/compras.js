@@ -475,3 +475,11 @@ var idProducto = document.getElementsByName("idProducto[]");
      });
 }
 }
+//validar formulario de compras
+$("#comprobante").on("change",function(){
+  if($("#comprobante").val()==""){
+    
+  }
+
+
+});

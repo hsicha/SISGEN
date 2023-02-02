@@ -86,7 +86,7 @@ function validarFormulario(){
   $("#categoria").on("change",function(){
     if($("#categoria").val()==""){
       $("#categoria").css("border","1px solid #f00");
-      $("#moneda").focus();
+      $("#categoria").focus();
     }else{
       $("#categoria").css("border","1px solid #14B76E");
       $("#codigo").focus();
