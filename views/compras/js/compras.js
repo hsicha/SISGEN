@@ -5,7 +5,7 @@ var cont=0;
 var detalles=0;
 var valor_igv=1.18
 var idcompras=0;
-$("#btnGuardar").hide();
+$("#btnGuardar").show();
 $("#comprobante").prop("disabled",true)
 $("#TipoPago").prop("disabled",true)
 $("#nserie").prop("disabled",true)
@@ -16,6 +16,9 @@ $("#btnBuscar").prop("disabled",true)
 //<----fin de las variables globales------->
 
 $( function() {
+  var fecha = new Date();
+  document.getElementById("fecha").value = fecha.toJSON().slice(0, 10);
+
 listarComboTipo();
 listarComboTipoDoc()
     $( "#buscar" ).autocomplete({
@@ -157,12 +160,6 @@ function evaluar(){
     {
       $("#btnGuardar").show();
       $("#comprobante").prop("disabled",false)
-      $("#TipoPago").prop("disabled",false)
-      $("#nserie").prop("disabled",false)
-      $("#ncomprobante").prop("disabled",false)
-      $("#fecha").prop("disabled",false)
-      $("#documento").prop("disabled",false)
-      $("#btnBuscar").prop("disabled",false)
       $("#comprobante").css("border", "1px solid #f00");
     }
     else
@@ -182,7 +179,7 @@ function eliminarDetalle(indice){
   evaluar();
 }
 function deshabilitar(){
-  $("#btnGuardar").hide(); 
+  $("#btnGuardar").show(); 
   $("#comprobante").prop("disabled",true)
   $("#TipoPago").prop("disabled",true)
   $("#nserie").prop("disabled",true)
@@ -190,6 +187,8 @@ function deshabilitar(){
   $("#fecha").prop("disabled",true)
   $("#documento").prop("disabled",true)
   $("#btnBuscar").prop("disabled",true)
+  $("#comprobante").css("border", "1px ");
+   $("#TipoPago").css("border", "1px ");
 
   
   
@@ -203,6 +202,11 @@ function limpiar(){
      $("#fecha").val("")
      $("#documento").val("")
      $("#idProveedor").val("")
+     $(".filas").remove();
+     $("#base").val("S/. 00.00")
+     $("#igv").val("S/. 00.00");
+     $("#totals").val("S/. 00.00");
+     $("#totalPagar").val("S/. 00.00");
 
 }
   
@@ -399,11 +403,46 @@ $("#cancelar").on('click',function(){
 $("#btnGuardar").click(function(){
 
   // datos de la tabla compras
-  InsertarCompra();
-  InseertarDetalle();
+  if(detalles==0 ){
+     showMessages(
+       "debe agregar al menos un producto al carrito !!",
+       "danger",
+       '<i class="fas fa-minus-circle"></i>'
+     );
+  }else{
+     if ($("#documento").val()=="") {
+        showMessages(
+       "debe ingresar un proveedor !!",
+       "danger",
+       '<i class="fas fa-minus-circle"></i>'  );
+       $("#comprobante").css("border", "1px solid #f00");
+       $("#documento").focus();
+   
+
+    }else{
+       InsertarCompra();
+      InseertarDetalle();
+       showMessages("Compra Registrada con éxito", "success", '<i class="fas fa-check-circle"></i>' );
+        limpiar();
+        deshabilitar();
+     
+    }
+
+  }
+
+  
+    
 })
 
-
+$("#documento").on ('keyup',function(){
+  if($("#documento").val()==""){
+     $("#documento").css("border", "1px solid #f00");
+     $("#documento").focus();
+  }else{
+     $("#documento").css("border", "1px solid #14b76e");
+  }
+ 
+})
 function InsertarCompra(){
 
   idProveedor = $("#idProveedor").val();
@@ -433,11 +472,9 @@ console.log(compras);
    dataType:"JSON",
    success:function(data){
     if(data.respuesta==true){
-      Swal.fire(data.mensaje, "Mensaje de confirmación", "success"); 
-      idcompras=data.IDC;
-      console.log("id compras " + idcompras)
+     console.log(data.respuesta)
     }else{
-       Swal.fire(data.mensaje, "Mensaje de Error", "error"); 
+      console.log(data.respuesta);
     }
    },
    error:function(data){
@@ -450,36 +487,127 @@ console.log(compras);
 }
 
 function InseertarDetalle(){
-var idProducto = document.getElementsByName("idProducto[]");
- var cantidad = document.getElementsByName("cantidad[]");
- var precio = document.getElementsByName("precio[]");
- var importe = document.getElementsByName("importe[]");
- for (i = 0; i < idProducto.length; i++) {
-   var idP = idProducto[i];
-   var prec = precio[i];
-   var cant = cantidad[i];
-   var imp = importe[i];
-   var array = [idP.value, prec.value, cant.value, imp.value];
-    console.log(array);
 
-     $.ajax({
-       type: "POST",
-       url: "compras/Registrar_Detalle",
-       data: { arrayProd: array },
-       success: function (data) {
-         console.log(data);
-       },
-       error: function (data) {
-         console.log(data);
-       },
-     });
-}
+    var idProducto = document.getElementsByName("idProducto[]");
+    var cantidad = document.getElementsByName("cantidad[]");
+    var precio = document.getElementsByName("precio[]");
+    var importe = document.getElementsByName("importe[]");
+    for (i = 0; i < idProducto.length; i++) {
+      var idP = idProducto[i];
+      var prec = precio[i];
+      var cant = cantidad[i];
+      var imp = importe[i];
+      var array = [idP.value, prec.value, cant.value, imp.value];
+      console.log(array);
+
+      $.ajax({
+        type: "POST",
+        url: "compras/Registrar_Detalle",
+        data: { arrayProd: array },
+        dataType: "JSON",
+        success: function (data) {
+          if (data.respuesta == true) {
+           console.log(data)
+          } else {
+            console.log(data);
+          }
+        },
+        error: function (data) {
+          showMessages(
+            data.responseText,
+            "danger",
+            '<i class="fas fa-minus-circle"></i>'
+          );
+          console.log(data.responseText);
+        },
+      });
+    }
+      
+ 
+
 }
 //validar formulario de compras
 $("#comprobante").on("change",function(){
   if($("#comprobante").val()==""){
-    
+    $("#comprobante").css("border","1px solid #f00");
+    $("#TipoPago").val("");
+     $("#TipoPago").css("border", "1px solid #f00");
+    $("#comprobante").focus();
+    //deshabilitamos los campos y limpiamos
+    limpiar();
+     $("#comprobante").prop("disabled", false);
+     $("#TipoPago").prop("disabled", true);
+     $("#nserie").prop("disabled", true);
+     $("#ncomprobante").prop("disabled", true);
+     $("#fecha").prop("disabled", true);
+     $("#documento").prop("disabled", true);
+     $("#btnBuscar").prop("disabled", true);
+     $("#comprobante").css("border", "1px ");
+     $("#TipoPago").css("border", "1px ");
+  }else{
+    $("#comprobante").css("border","1px solid #14b76e");
+    $("#TipoPago").prop("disabled",false);
+    $("#TipoPago").val("CONTADO");
+    $("#TipoPago").css("border", "1px solid #14b76e");
+  }
+  if($("#comprobante").val()=="BOLETA"){
+    $("#nserie").val("B001");
+    $("#ncomprobante").val("0000001");
+    $("#nserie").css("border", "1px solid #14b76e");
+    $("#ncomprobante").css("border", "1px solid #14b76e");
+
+    $("#nserie").prop("disabled", false);
+    $("#ncomprobante").prop("disabled", false);
+    $("#fecha").prop("disabled", false);
+    $("#documento").prop("disabled", false);
+     $("#documento").css("border", "1px solid #f00");
+      $("#documento").focus();
+  }
+  else{
+     if($("#comprobante").val()=="FACTURA"){
+       $("#nserie").val("F001");
+       $("#ncomprobante").val("0000001");
+       $("#nserie").css("border", "1px solid #14b76e");
+       $("#ncomprobante").css("border", "1px solid #14b76e");
+        $("#nserie").prop("disabled", false);
+        $("#ncomprobante").prop("disabled", false);
+        $("#fecha").prop("disabled", false);
+        $("#documento").prop("disabled", false);
+          $("#documento").css("border", "1px solid #f00");
+          $("#documento").focus();
+     }else{
+      if($("#comprobante").val()=="PROFORMA"){
+         $("#nserie").val("P001");
+         $("#ncomprobante").val("0000001");
+         $("#nserie").css("border", "1px solid #14b76e");
+         $("#ncomprobante").css("border", "1px solid #14b76e");
+          $("#nserie").prop("disabled", false);
+          $("#ncomprobante").prop("disabled", false);
+          $("#fecha").prop("disabled", false);
+          $("#documento").prop("disabled", false);
+           $("#documento").css("border", "1px solid #f00");
+            $("#documento").focus();
+      }
+  }
+   
   }
 
 
 });
+
+function showMessages( message,cssClass,icon){
+    const div=document.createElement('div');
+     const span = document.createElement("span");
+     span.innerHTML = icon+ '<strong>'+" "+ message+'</strong> ';
+    span.style.fontSize="15px"
+    div.className=`alert text-center alert-${cssClass} mt-2`;
+    div.appendChild(span)
+    const container = document.querySelector(".main_content_iner");
+   const app= document.querySelector("#App");
+    container.insertBefore(div,app);
+    setTimeout(function(){
+        document.querySelector('.alert').remove();
+
+    },2000)
+ }
+

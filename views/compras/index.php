@@ -2,12 +2,17 @@
     table{
         white-space: nowrap;
     }
+.msm{
+  height: 30px;
 
+}
 </style>
 <div class="main_content_iner ">
-
-   <div class="row">
-            <div class="alert alert-success rounded-0 d-none" ></div>
+  <div   id="msm">
+    <span id="mensaje"></i></span>
+</div>
+   <div class="row" id="App">
+            <div class="alert alert-sm alert-success rounded-0 d-none" ></div>
         <div class="col-lg-8 col-md-12 col-sm-12 ">
            <div class="input-group input-group-sm mb-3">
          
@@ -69,6 +74,8 @@
                             <select name="TipoPago" id="TipoPago" class="form-select form-select-sm rounded-0">
                             <option value="">SELECCIONE</option>
                                 <option value="CONTADO">CONTADO</option>
+                                 <option value="TRANSFERENCIA">TRANSFERENCIA</option>
+                                  <option value="YAPE">YAPE</option>
                             </select>
                             <div class="mt-1">
                                 <label for=""class="form-label">N° COMPROBANTE</label>
@@ -79,12 +86,12 @@
                         </div>
                         <div class="mt-1">
                             <label for="" class="form-label">FECHA COMPRA</label>
-                            <input type="date" class="form-control form-control-sm rounded-0 " name="fecha" id="fecha" value="29/01/2023">
+                            <input type="date" class="form-control form-control-sm rounded-0 " name="fecha" id="fecha" value="">
                         </div>
                         <div class="mt-1 border-bottom">
                             <label for="" class="form-label">PROVEEDOR</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control form-control-sm rounded-0" name="documento"  placeholder="RUC/DNI"  id="documento"  >
+                                <input type="text" class="form-control form-control-sm rounded-0" name="documento"  placeholder="RUC/DNI"  id="documento" required >
                                 <button class="btn btn-primary rounded-0" type="button" id="btnBuscar">Buscar</button>
                             </div>
                             <input type="hidden" name="idProveedor" id="idProveedor">

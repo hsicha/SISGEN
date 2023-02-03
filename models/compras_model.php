@@ -86,7 +86,8 @@
         return $this->TipoDoc;
     }
     function obtener_Id(){
-    return $this->db->select("SELECT MAX(CODIGO_COMPRAS)FROM COMPRAS");
+     $id= $this->db->select("SELECT MAX(CODIGO_COMPRAS)FROM COMPRAS");
+     return $id[0][0];
 }
     function RegistrarCompras($data){
         $stm=$this->db->insert('COMPRAS',$data);
@@ -95,7 +96,6 @@
      	public function lasdidcomp()
 	{
 		 $codigoCompra = $this->db->lastInsertId(); //Recuperamos el código de la Venta
-
 		return $codigoCompra;
 	}
       function devolver_stock_producto($data){
@@ -118,6 +118,17 @@
       function last_id(){
         $id=$this->db->select('SELECT CODIGO_COMPRAS FROM compras ORDER BY CODIGO_COMPRAS DESC LIMIT 1');
         return $id[0][0];
+      }
+      function lastId(){
+        $id=array();
+        $stm=$this->db->prepare("SELECT MAX(CODIGO_COMPRAS) AS ID FROM COMPRAS ");
+        $stm->execute();
+        if($row=$stm->fetch(PDO::FETCH_ASSOC)){
+            $id=array(
+                "ID"=>$row["ID"]
+            );
+        }
+        return $id;
       }
   
     
