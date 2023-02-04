@@ -37,35 +37,35 @@
             <li>
               <a href="#">
                 <div class="member_thumb">
-                  <img src="<?php URL?>public/img/staf/1.png" alt="" />
+                  <img src="<?=URL?>public/img/staf/1.png" alt="" />
                 </div>
               </a>
             </li>
             <li>
               <a href="#">
                 <div class="member_thumb">
-                  <img src="<?php URL?>public/img/staf/2.png" alt="" />
+                  <img src="<?=URL?>public/img/staf/2.png" alt="" />
                 </div>
               </a>
             </li>
             <li>
               <a href="#">
                 <div class="member_thumb">
-                  <img src="<?php URL?>public/img/staf/3.png" alt="" />
+                  <img src="<?=URL?>public/img/staf/3.png" alt="" />
                 </div>
               </a>
             </li>
             <li>
               <a href="#">
                 <div class="member_thumb">
-                  <img src="<?php URL?>public/img/staf/4.png" alt="" />
+                  <img src="<?=URL?>public/img/staf/4.png" alt="" />
                 </div>
               </a>
             </li>
             <li>
               <a href="#">
                 <div class="member_thumb">
-                  <img src="<?php URL?>public/img/staf/5.png" alt="" />
+                  <img src="<?=URL?>public/img/staf/5.png" alt="" />
                 </div>
               </a>
             </li>
@@ -85,7 +85,7 @@
         <p class="mesaged_send_date">Sunday, 12 January</p>
         <div class="CHATING_SENDER">
           <div class="SMS_thumb">
-            <img src="<?php URL?>public/img/staf/1.png" alt="" />
+            <img src="<?=URL?>public/img/staf/1.png" alt="" />
           </div>
           <div class="SEND_SMS_VIEW">
             <p>Hi! Welcome . How can I help you?</p>
@@ -96,7 +96,7 @@
             <p>Hello</p>
           </div>
           <div class="SMS_thumb">
-            <img src="<?php URL?>public/img/staf/1.png" alt="" />
+            <img src="<?=URL?>public/img/staf/1.png" alt="" />
           </div>
         </div>
       </div>
@@ -153,67 +153,67 @@
       </a>
     </div>
 
-    <script src="<?php URL?>public/js/jquery1-3.4.1.min.js"></script>
+    <script src="<?=URL?>public/js/jquery1-3.4.1.min.js"></script>
 
-    <script src="<?php URL?>public/js/popper1.min.js"></script>
+    <script src="<?=URL?>public/js/popper1.min.js"></script>
 
-    <script src="<?php URL?>public/js/bootstrap1.min.js"></script>
+    <script src="<?=URL?>public/js/bootstrap1.min.js"></script>
 
-    <script src="<?php URL?>public/js/metisMenu.js"></script>
+    <script src="<?=URL?>public/js/metisMenu.js"></script>
 
-    <script src="<?php URL?>public/vendors/count_up/jquery.waypoints.min.js"></script>
+    <script src="<?=URL?>public/vendors/count_up/jquery.waypoints.min.js"></script>
 
-    <script src="<?php URL?>public/vendors/chartlist/Chart.min.js"></script>
+    <script src="<?=URL?>public/vendors/chartlist/Chart.min.js"></script>
 
-    <script src="<?php URL?>public/vendors/count_up/jquery.counterup.min.js"></script>
+    <script src="<?=URL?>public/vendors/count_up/jquery.counterup.min.js"></script>
 
-    <script src="<?php URL?>public/vendors/niceselect/js/jquery.nice-select.min.js"></script>
+    <script src="<?=URL?>public/vendors/niceselect/js/jquery.nice-select.min.js"></script>
 
-    <script src="<?php URL?>public/vendors/owl_carousel/js/owl.carousel.min.js"></script>
+    <script src="<?=URL?>public/vendors/owl_carousel/js/owl.carousel.min.js"></script>
 
-    <script src="<?php URL?>public/vendors/datatable/js/jquery.dataTables.min.js"></script>
-    <script src="<?php URL?>public/vendors/datatable/js/dataTables.responsive.min.js"></script>
-    <script src="<?php URL?>public/vendors/datatable/js/dataTables.buttons.min.js"></script>
-    <script src="<?php URL?>public/vendors/datatable/js/buttons.flash.min.js"></script>
-    <script src="<?php URL?>public/vendors/datatable/js/jszip.min.js"></script>
-    <script src="<?php URL?>public/vendors/datatable/js/pdfmake.min.js"></script>
-    <script src="<?php URL?>public/vendors/datatable/js/vfs_fonts.js"></script>
-    <script src="<?php URL?>public/vendors/datatable/js/buttons.html5.min.js"></script>
-    <script src="<?php URL?>public/vendors/datatable/js/buttons.print.min.js"></script>
+    <script src="<?=URL?>public/vendors/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="<?=URL?>public/vendors/datatable/js/dataTables.responsive.min.js"></script>
+    <script src="<?=URL?>public/vendors/datatable/js/dataTables.buttons.min.js"></script>
+    <script src="<?=URL?>public/vendors/datatable/js/buttons.flash.min.js"></script>
+    <script src="<?=URL?>public/vendors/datatable/js/jszip.min.js"></script>
+    <script src="<?=URL?>public/vendors/datatable/js/pdfmake.min.js"></script>
+    <script src="<?=URL?>public/vendors/datatable/js/vfs_fonts.js"></script>
+    <script src="<?=URL?>public/vendors/datatable/js/buttons.html5.min.js"></script>
+    <script src="<?=URL?>public/vendors/datatable/js/buttons.print.min.js"></script>
 
-    <script src="<?php URL?>public/vendors/datepicker/datepicker.js"></script>
-    <script src="<?php URL?>public/vendors/datepicker/datepicker.en.js"></script>
-    <script src="<?php URL?>public/vendors/datepicker/datepicker.custom.js"></script>
-    <script src="<?php URL?>public/js/chart.min.js"></script>
-    <script src="<?php URL?>public/vendors/chartjs/roundedBar.min.js"></script>
+    <script src="<?=URL?>public/vendors/datepicker/datepicker.js"></script>
+    <script src="<?=URL?>public/vendors/datepicker/datepicker.en.js"></script>
+    <script src="<?=URL?>public/vendors/datepicker/datepicker.custom.js"></script>
+    <script src="<?=URL?>public/js/chart.min.js"></script>
+    <script src="<?=URL?>public/vendors/chartjs/roundedBar.min.js"></script>
 
-    <script src="<?php URL?>public/vendors/progressbar/jquery.barfiller.js"></script>
+    <script src="<?=URL?>public/vendors/progressbar/jquery.barfiller.js"></script>
 
-    <script src="<?php URL?>public/vendors/tagsinput/tagsinput.js"></script>
+    <script src="<?=URL?>public/vendors/tagsinput/tagsinput.js"></script>
 
-    <script src="<?php URL?>public/vendors/text_editor/summernote-bs4.js"></script>
-    <script src="<?php URL?>public/vendors/am_chart/amcharts.js"></script>
+    <script src="<?=URL?>public/vendors/text_editor/summernote-bs4.js"></script>
+    <script src="<?=URL?>public/vendors/am_chart/amcharts.js"></script>
 
-    <script src="<?php URL?>public/vendors/scroll/perfect-scrollbar.min.js"></script>
-    <script src="<?php URL?>public/vendors/scroll/scrollable-custom.js"></script>
+    <script src="<?=URL?>public/vendors/scroll/perfect-scrollbar.min.js"></script>
+    <script src="<?=URL?>public/vendors/scroll/scrollable-custom.js"></script>
 
-    <script src="<?php URL?>public/vendors/vectormap-home/vectormap-2.0.2.min.js"></script>
-    <script src="<?php URL?>public/vendors/vectormap-home/vectormap-world-mill-en.js"></script>
+    <script src="<?=URL?>public/vendors/vectormap-home/vectormap-2.0.2.min.js"></script>
+    <script src="<?=URL?>public/vendors/vectormap-home/vectormap-world-mill-en.js"></script>
 
-    <script src="<?php URL?>public/vendors/apex_chart/apex-chart2.js"></script>
-    <script src="<?php URL?>public/vendors/apex_chart/apex_dashboard.js"></script>
+    <script src="<?=URL?>public/vendors/apex_chart/apex-chart2.js"></script>
+    <script src="<?=URL?>public/vendors/apex_chart/apex_dashboard.js"></script>
 
-    <script src="<?php URL?>public/vendors/chart_am/core.js"></script>
-    <script src="<?php URL?>public/vendors/chart_am/charts.js"></script>
-    <script src="<?php URL?>public/vendors/chart_am/animated.js"></script>
-    <script src="<?php URL?>public/vendors/chart_am/kelly.js"></script>
-    <script src="<?php URL?>public/vendors/chart_am/chart-custom.js"></script>
-    <script src="<?php URL?>node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <script src="<?=URL?>public/vendors/chart_am/core.js"></script>
+    <script src="<?=URL?>public/vendors/chart_am/charts.js"></script>
+    <script src="<?=URL?>public/vendors/chart_am/animated.js"></script>
+    <script src="<?=URL?>public/vendors/chart_am/kelly.js"></script>
+    <script src="<?=URL?>public/vendors/chart_am/chart-custom.js"></script>
+    <script src="<?=URL?>node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
-    <script src="<?php URL?>public/js/dashboard_init.js"></script>
-    <script src="<?php URL?>public/js/jquery-ui.min.js"></script>
-    <script src="<?php URL?>public/js/decimal.min.js"></script>
-    <script src="<?php URL?>public/js/custom.js"></script>
+    <script src="<?=URL?>public/js/dashboard_init.js"></script>
+    <script src="<?=URL?>public/js/jquery-ui.min.js"></script>
+    <script src="<?=URL?>public/js/decimal.min.js"></script>
+    <script src="<?=URL?>public/js/custom.js"></script>
   </body>
 
   <!-- Mirrored from demo.dashboardpack.com/user-management-html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Jan 2023 23:20:01 GMT -->

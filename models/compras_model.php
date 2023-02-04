@@ -130,6 +130,21 @@
         }
         return $id;
       }
+      // de aqui en adelante se crean los reportes
+      function consultar_comprass(){
+        $stm=$this->db->select("SELECT
+         (@i:=@i+1) AS N,
+          P.RUC AS RUC,
+          P.RAZON_SOCIAL AS PROVEEDOR,
+          P.REPRESENTANTE AS REPRESENTANTE,
+          CONCAT(C.SERIE,'-',C.NRO_COMPROBANTE) AS DOCUMENTO,
+          DATE_FORMAT(C.FECHA_COMPRA,'%d/%m/%Y') AS FECHA,
+          C.TOTAL AS TOTAL
+          FROM COMPRAS C
+          INNER JOIN  PROVEEDOR P CROSS JOIN (SELECT(@i:=0))P
+          ON C.CODIGO_PROVEEDOR=P.CODIGO_PROVEEDOR");
+        return $stm;
+      }
   
     
  }

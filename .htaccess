@@ -1,6 +1,20 @@
 RewriteEngine On
-
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-l
+
 RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+RewriteCond $1 !^(index\.php|images)
+RewriteCond %{HTTP_HOST} !^www.
+RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+ErrorDocument 404 "<H1>Page not found! Error: 404</H1>"
+
+
+Options -Indexes
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Configure el paquete “ea-php71” como el lenguaje de programación predeterminado “PHP”.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php71 .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

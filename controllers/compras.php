@@ -4,14 +4,13 @@ class Compras extends Controller{
  private $idC;
     function __construct(){
         parent::__construct();
+        
     }
    
     function index(){
-        $hoy=date("d/d/y");
-        $this->view->hoy=$hoy;
         $this->view->title='Compras';
         $this->view->renderAdmin('compras/index');
-
+        
     }
    
     function autocompleteP(){
@@ -108,7 +107,17 @@ class Compras extends Controller{
             echo json_encode($salidaJson);
       }
 
-    
+    //vistas para las consultas y los reporets
+    public function consultar_compras(){
+      $this->view->title="Consultar Compras";
+      $this->view->data=$this->model->consultar_comprass();
+      
+      $this->view->renderAdmin('compras/consultar_compras');
+    }
+  public function listar_compras(){
+      $data=$this->model->consultar_comprass();
+      echo json_encode($data);
+    }
      
 }
 

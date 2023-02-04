@@ -6,31 +6,41 @@
                             <div class="white_card_header">
                                 <div class="box_header m-0">
                                     <a href="<?=URL?>proveedor/ExportarExcelProveedor" class="btn btn-success btn-sm rounded-0"> <i class="fas fa-file-excel"></i> Exportar</a>
-                                    <button class="btn btn-primary text-light btn-sm rounded-0" data-bs-toggle="modal"
-                                             data-bs-target="#modalAgregar" id="nuevo" ><i class="fas fa-plus" ></i> Nuevo</button>
+                                   <a href="<?=URL?>compras" class="btn btn-primary btn-sm rounded-0"><i class="fas fa-plus" ></i> Nueva Compra</a>
+                                  
                                 </div>
                             </div>
                             <div class="white_card_body">
                                 <div class="QA_section">
             
-                                    <div class="QA_table mb_30" >
-                                        <table class="table lms_table_active" id="tabla">
+                                     <div class="QA_table mb_30" >
+                                        <table class="table lms_table_active">
                                           <thead>
                                             <tr>
                                               <th scope="col">N°</th>
-                                              <th scope="col">TIPO CONTRIBUYENTE</th>
-                                              <th scope="col">TIPO DOCUMENTO</th>
-                                              <th scope="col">RUC</th>
-                                              <th scope="col">RAZON SOCIAL</th>
-                                              <th scope="col">DIRECCION</th>
+                                              <th scope="col">DNI/RUC</th>
+                                              <th scope="col">PROVEEDOR</th>
                                               <th scope="col">REPRESENTANTE</th>
-                                              <th scope="col">TELEFONO</th>
-                                              <th scope="col">EMAIL</th>
-                                              <th scope="col">OPCIONES</th>
+                                              <th scope="col">DOCUMENTO</th>
+                                              <th scope="col">FECHA COMPRA</th>
+                                              <th scope="col">TOTAL</th>
+                                              <th scope="col">DETALLE</th>
                                             </tr>
                                           </thead>
-                                          <tbody id="producto">
-                                        
+                                          <tbody >
+                                           <?php  foreach($this->data as $value){  ?>
+                                              <tr>
+                                                <td><?php echo $value[0];?></td>
+                                                 <td><?php echo $value[1];?></td>
+                                                  <td><?php echo $value[2];?></td>
+                                                   <td><?php echo $value[3];?></td>
+                                                    <td><?php echo $value[4];?></td>
+                                                    <td><?php echo $value[5];?></td>
+                                                    <td><?php echo $value[6];?></td>
+                                                     <td><?php echo $value[6];?></td>
+                                                      
+                                            </tr>
+                                            <?php } ?>
                                           </tbody>
                                         </table>
                                        
@@ -153,13 +163,5 @@
       </div>
     </div>
 
-   
-
-        <script src="<?=URL?>public/js/jquery1-3.4.1.min.js"></script>
-        <script src="<?=URL?>views/proveedor/js/proveedor.js"></script>
-
-       
-
-
-
-   
+<script src="<?=URL?>public/js/jquery1-3.4.1.min.js"></script>
+<script src="<?=URL?>views/compras/js/compras.js"></script>
