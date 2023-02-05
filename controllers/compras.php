@@ -116,7 +116,7 @@ class Compras extends Controller{
     }
   public function listar_compras(){
       $data=$this->model->consultar_comprass();
-      echo json_encode($data);
+      print json_encode($data,JSON_UNESCAPED_UNICODE);
     }
      
 }

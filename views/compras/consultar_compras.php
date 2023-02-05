@@ -28,19 +28,6 @@
                                             </tr>
                                           </thead>
                                           <tbody >
-                                           <?php  foreach($this->data as $value){  ?>
-                                              <tr>
-                                                <td><?php echo $value[0];?></td>
-                                                 <td><?php echo $value[1];?></td>
-                                                  <td><?php echo $value[2];?></td>
-                                                   <td><?php echo $value[3];?></td>
-                                                    <td><?php echo $value[4];?></td>
-                                                    <td><?php echo $value[5];?></td>
-                                                    <td><?php echo $value[6];?></td>
-                                                     <td><?php echo $value[6];?></td>
-                                                      
-                                            </tr>
-                                            <?php } ?>
                                           </tbody>
                                         </table>
                                        
