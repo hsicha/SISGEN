@@ -16,11 +16,6 @@ $("#btnBuscar").prop("disabled",true)
 //<----fin de las variables globales------->
 
 $( function() {
-listar();
-
-  var fecha = new Date();
-  document.getElementById("fecha").value = fecha.toJSON().slice(0, 10);
-
 listarComboTipo();
 listarComboTipoDoc()
     $( "#buscar" ).autocomplete({
@@ -615,49 +610,3 @@ function showMessages( message,cssClass,icon){
 
 
 
- function listar() {
-   if ($(".lms_table_active").length) {
-     tabla = $(".lms_table_active").DataTable({
-       bLengthChange: true,
-       bDestroy: true,
-       language: {
-         search: "Buscar por",
-         lengthMenu: "Mostrar _MENU_ Elementos",
-         info: "Mostrando _START_ a _END_ de _TOTAL_ Elementos",
-         infoEmpty: "Mostrando 0 registros de 0 registros encontrados",
-         paginate: {
-           next: "<i class='ti-arrow-right'></i>",
-           previous: "<i class='ti-arrow-left'></i>",
-         },
-       },
-       columnDefs: [{ visible: false }],
-       responsive: true,
-       searching: true,
-       ajax: {
-         url: "compras/listar_compras",
-         type: "GET",
-         dataSrc: "",
-       },
-       columns: [
-         { data: "N" },
-         { data: "RUC" },
-         { data: "PROVEEDOR" },
-         { data: "REPRESENTANTE" },
-         { data: "DOCUEMNTO" },
-         { data: "FECHA" },
-         { data: "TOTAL" },
-         {
-           data: null,
-           render: function (data, type, row) {
-             return ` <div class="action_btns d-flex">
-                    <a href="javascript:void(0)" class="action_btn mr_10 edit">
-                      <i class="far fa-edit"></i> Editar
-                    </a>
-                  
-                  </div>`;
-           },
-         },
-       ],
-     });
-   }
- }

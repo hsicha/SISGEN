@@ -1,21 +1,40 @@
 
-
 <style>
     table{
         white-space: nowrap;
     }
+
 </style>
 <div class="main_content_iner ">
-            <div class="container-fluid p-0">
+            <div class="container-fluid ">
+              <form action="<?=URL?>compras/consultas_por_fechas" method="post" id="frmBusqueda">
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
                         <div class="white_card card_height_100 mb_30">
                             <div class="white_card_header">
-                                <div class="box_header m-0">
-                                    <a href="<?=URL?>proveedor/ExportarExcelProveedor" class="btn btn-success btn-sm rounded-0"> <i class="fas fa-file-excel"></i> Exportar</a>
-                                   <a href="<?=URL?>compras" class="btn btn-primary btn-sm rounded-0"><i class="fas fa-plus" ></i> Nueva Compra</a>
-                                  
-                                </div>
+                                <div class="box_header m-0 d-block">
+                                 <div class="row">
+                                    <div class=" col-md-4 col-sm-12 col-12  col-lg-4">
+                                      <div class="form-group">
+                                        <label for="">Fecha Inicial</label>
+                                        <input type="date" class="form-control form-control-sm rounded-0" name="fecha_ini" id="fecha_ini" value="<?php echo date('Y-m-d'); ?>">
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12 col-12 col-lg-4">
+                                        <div class="form-group">
+                                          <label for="">Fecha Fin</label>
+                                          <input type="date" class="form-control form-control-sm rounded-0" name="fecha_fin" id="fecha_fin" value="<?php echo date('Y-m-d'); ?>">
+                                          
+                                        </div>
+                                    </div>
+                                      <div class=" col-md-4 mt-3 col-sm-12 col-12  col-lg-4" >
+                                        <div class="form-group">
+                                          <button type="submit" class="btn btn-primary rounded-0 btn-sm mt-1" id="btnBuscar" ><i class="fas fa-search" ></i>  BUSCAR</button>
+                                        </div>
+                                      </div>
+                                 </div>
+                                                              
+                              </div>
                             </div>
                             <div class="white_card_body">
                                 <div class="QA_section">
@@ -35,21 +54,23 @@
                                             </tr>
                                           </thead>
                                           <tbody >
-                                           <?php  foreach($this->data as $key => $value){  ?>
+                                            <?php if(isset($this->obtenerData)) {?>
+                                          <?php foreach($this->obtenerData as $key=>$value){ ?>
                                               <tr>
-                                                <td><?=$key+1;?></td>
-                                                 <td><?=$value[1];?></td>
-                                                  <td><?=$value[2];?></td>
-                                                   <td><?=$value[3];?></td>
-                                                    <td><?=$value[4];?></td>
-                                                    <td><?=$value[5];?></td>
-                                                    <td><?=$value[6];?></td>
-
-                                                     <td>
-                                                      <a href="javascript:void()" onclick="detalle_compras('<?=URL?>compras/listar_detalle_compras',<?=$value[0]?>)" class="text-info fs-5"><i class="fas fa-eye"></i></a>
+                                                <td><?=$key+1?></td>
+                                                <td><?= $value['RUC']?></td>
+                                                 <td><?= $value['PROVEEDOR']?></td>
+                                                  <td><?= $value['REPRESENTANTE']?></td>
+                                                   <td><?= $value['DOCUMENTO']?></td>
+                                                    <td><?= $value['FECHA']?></td>
+                                                     <td><?= $value['TOTAL']?></td>
+                                                       <td>
+                                                      <a href="javascript:void()" onclick="detalle_compras('<?=URL?>compras/listar_detalle_compras',<?=$value['CODIGO']?>)" class="text-info fs-5"><i class="fas fa-eye"></i></a>
                                                      </td>
-                                            </tr>
-                                            <?php } ?>
+                                              </tr>
+
+                                            <?php }?>
+                                            <?php }?>
                                           </tbody>
                                         </table>
                                        
@@ -59,6 +80,7 @@
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
 

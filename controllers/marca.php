@@ -22,11 +22,7 @@ class Marca extends Controller{
        print $getData;
     }
 
-    public function obtenerId(){
-        
-  
-      
-    }
+
 
     function Registrar(){
         $id= $this->model->obtenerId('CODIGO_MARCA');

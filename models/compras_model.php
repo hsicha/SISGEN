@@ -133,7 +133,7 @@
       // de aqui en adelante se crean los reportes
       function consultar_comprass(){
         $stm=$this->db->select("SELECT
-         (@i:=@i+1) AS N,
+          C.CODIGO_COMPRAS AS CODIGO,
           P.RUC AS RUC,
           P.RAZON_SOCIAL AS PROVEEDOR,
           P.REPRESENTANTE AS REPRESENTANTE,
@@ -141,13 +141,61 @@
           DATE_FORMAT(C.FECHA_COMPRA,'%d/%m/%Y') AS FECHA,
           C.TOTAL AS TOTAL
           FROM COMPRAS C
-          INNER JOIN  PROVEEDOR P CROSS JOIN (SELECT(@i:=0))P
+          INNER JOIN  PROVEEDOR P
           ON C.CODIGO_PROVEEDOR=P.CODIGO_PROVEEDOR");
         return $stm;
       }
   
-    
+   function detalle_compras($codigo_compras) {
+    $sql=$this->db->select("SELECT p.RAZON_SOCIAL PROVEEDOR,  p.RUC AS RUC, tc.DESCRIPCION AS TCONTRIBUYENTE, td.DESCRIPCION AS TPDOC,  
+		   p.DIRECCION AS DIRECCION,P.TELEFONO AS TELEFONO, c.SERIE as SERIE, c.NRO_COMPROBANTE NCOMPROBANTE,
+           C.TIPO_PAGO,
+		   DATE_FORMAT(c.FECHA_COMPRA,'%d/%m/%Y') AS FECHA, TOTAL,
+           dc.CANTIDAD as CANTIDAD, PR.DESCRIPCION AS PRODUCTO, CONVERT(PR.PRECIO,DECIMAL(11,2))
+	FROM compras c, proveedor p, tipo_documento_contribuyente td, tipo_contribuyente tc, detalle_compras dc, producto PR
+	WHERE  C.CODIGO_PROVEEDOR = p.CODIGO_PROVEEDOR
+	AND p.TIPO_DOCUMENTO = td.CODIGO
+	AND p.TIPO_CONTRIBUYENTE = tc.CODIGO_TIPO_CONTRIBUYENTE
+    AND c.codigo_compras=dc.codigo_compras
+    AND DC.CODIGO_PRODUCTO=PR.CODIGO_PRODUCTO
+    AND C.CODIGO_COMPRAS=$codigo_compras
+	ORDER BY c.FECHA_COMPRA desc;  ");
+     return $sql;
+   }
+
+   //consultas por fechas
+   function consultar_compras_Rago_Fechas($data){
+        $stm=$this->db->select("SELECT
+         C.CODIGO_COMPRAS AS CODIGO,
+          P.RUC AS RUC,
+           P.RAZON_SOCIAL AS PROVEEDOR,
+            P.REPRESENTANTE AS REPRESENTANTE, 
+             CONCAT(C.SERIE,'-',C.NRO_COMPROBANTE) AS DOCUMENTO, 
+               DATE_FORMAT(C.FECHA_COMPRA,'%d/%m/%Y') AS FECHA,
+          C.TOTAL AS TOTAL       FROM COMPRAS C
+          INNER JOIN  PROVEEDOR P
+          ON C.CODIGO_PROVEEDOR=P.CODIGO_PROVEEDOR 
+          WHERE    DATE_FORMAT(C.FECHA_COMPRA,'%Y-%m-%d') BETWEEN :FECHA1 AND :FECHA2  GROUP BY  C.CODIGO_COMPRAS ",$data,PDO::FETCH_ASSOC);
+        return $stm;
+      }
+
+        function consultar_mensual($data){
+        $stm=$this->db->select("SELECT
+         C.CODIGO_COMPRAS AS CODIGO,
+          P.RUC AS RUC,
+           P.RAZON_SOCIAL AS PROVEEDOR,
+            P.REPRESENTANTE AS REPRESENTANTE, 
+             CONCAT(C.SERIE,'-',C.NRO_COMPROBANTE) AS DOCUMENTO, 
+               DATE_FORMAT(C.FECHA_COMPRA,'%d/%m/%Y') AS FECHA,
+          C.TOTAL AS TOTAL       FROM COMPRAS C
+          INNER JOIN  PROVEEDOR P
+          ON C.CODIGO_PROVEEDOR=P.CODIGO_PROVEEDOR 
+          WHERE  YEAR(C.FECHA_COMPRA) =  :ANO AND MONTH(C.FECHA_COMPRA) =:MES   GROUP BY  C.CODIGO_COMPRAS ",$data,PDO::FETCH_ASSOC);
+        return $stm;
+      }
+  
  }
+ 
 
 
 

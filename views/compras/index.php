@@ -86,7 +86,7 @@
                         </div>
                         <div class="mt-1">
                             <label for="" class="form-label">FECHA COMPRA</label>
-                            <input type="date" class="form-control form-control-sm rounded-0 " name="fecha" id="fecha" value="">
+                            <input type="date" class="form-control form-control-sm rounded-0 " name="fecha" id="fecha" value="<?php echo date('Y-m-d'); ?>" require>
                         </div>
                         <div class="mt-1 border-bottom">
                             <label for="" class="form-label">PROVEEDOR</label>

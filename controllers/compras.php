@@ -3,8 +3,7 @@ class Compras extends Controller{
   private  $hoy;
  private $idC;
     function __construct(){
-        parent::__construct();
-        
+        parent::__construct();  
     }
    
     function index(){
@@ -111,14 +110,52 @@ class Compras extends Controller{
     public function consultar_compras(){
       $this->view->title="Consultar Compras";
       $this->view->data=$this->model->consultar_comprass();
-      
       $this->view->renderAdmin('compras/consultar_compras');
     }
-  public function listar_compras(){
-      $data=$this->model->consultar_comprass();
-      print json_encode($data,JSON_UNESCAPED_UNICODE);
+  public function listar_detalle_compras(){
+    if(isset($_POST["idcompras"])){
+       $idcompra=$_POST["idcompras"];
+      $data=$this->model->detalle_compras($idcompra);
+      print json_encode($data);
     }
+   
+    
+      
+    }
+     function consultas_por_fechas(){
+      
+        if (isset($_POST['fecha_ini']) && isset($_POST['fecha_fin'])) {
+         $data=array("FECHA1" => trim($_POST['fecha_ini']),
+                    "FECHA2"=> trim($_POST['fecha_fin']) );
+          $this->view->title="Compras por Fechas";
+          $this->view->obtenerData=$this->model->consultar_compras_Rago_Fechas($data);
+          $this->view->renderAdmin('compras/consultas_por_fechas');
+       }else{
+         $this->view->title="Compras - Fechas";
+         $this->view->renderAdmin('compras/consultas_por_fechas');
+       }
      
+    }
+    function consultas_mensuales(){
+       if (isset($_POST['año']) && isset($_POST['mes'])) {
+         $data=array("ANO" => trim($_POST['año']),
+                    "MES"=> trim($_POST['mes']) );
+          $this->view->title="Compras Mensuales";
+          $this->view->obtenerData=$this->model->consultar_mensual($data);
+          $this->view->renderAdmin('compras/consultas_mensuales');
+       }else{
+        $this->view->title="Consultas Mensuales";
+        $this->view->renderAdmin('compras/consultas_mensuales');
+       }
+   
+    }
+
+
+
+
+
+
+   
 }
 
 ?>

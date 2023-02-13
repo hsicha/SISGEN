@@ -93,7 +93,9 @@
             <li><a href="<?=URL?>proveedor">Proveedor</a></li>
             <li><a href="<?=URL?>compras">Compras</a></li>
             <li><a href="<?=URL?>compras/consultar_compras">Consultar Compras</a></li>
-            <li><a href="faq.html">Compras por Fecha</a></li>
+            <li><a href="<?=URL?>compras/consultas_por_fechas">Compras por Fecha</a></li>
+            <li><a href="<?=URL?>compras/consultas_mensuales">Compras mensuales</a></li>
+
           </ul>
         </li>
         <li class="">
@@ -132,8 +134,8 @@
             </div>
           </a>
           <ul>
-            <li><a href="admin_list.html">Usuario</a></li>
-            <li><a href="<?=URL?>add_new_admin.html">Perfiles</a></li>
+            <li><a href="<?=URL?>perfil">Perfiles</a></li>
+            <li><a href="<?=URL?>usuario">Usuarios</a></li>
             <li><a href="<?= URL?>add_new_admin.html">Permisos</a></li>
           </ul>
         </li>
