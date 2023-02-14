@@ -118,8 +118,8 @@
             </div>
           </a>
           <ul>
-            <li><a href="login.html">Cliente</a></li>
-            <li><a href="resister.html">Ventas</a></li>
+            <li><a href="<?=URL?>cliente">Cliente</a></li>
+            <li><a href="<?=URL?>ventas">Ventas</a></li>
             <li><a href="error_400.html">Consultar Ventas</a></li>
             <li><a href="error_500.html">Ventas por Fecha</a></li>
           </ul>
