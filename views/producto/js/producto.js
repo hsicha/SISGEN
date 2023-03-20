@@ -20,15 +20,15 @@ function lisarCategoria(){
   })
 }
 function listar(){
-  if ($(".lms_table_active").length) {
-   tabla= $(".lms_table_active").DataTable({
+  if ($("#tblRegistros").length) {
+    tabla = $("#tblRegistros").DataTable({
       bLengthChange: true,
       bDestroy: true,
       language: {
         search: "Buscar por",
-        lengthMenu:    "Mostrar _MENU_ Elementos",
-        info:           "Mostrando _START_ a _END_ de _TOTAL_ Elementos",
-        infoEmpty:      "Mostrando 0 registros de 0 registros encontrados",
+        lengthMenu: "Mostrar _MENU_ Elementos",
+        info: "Mostrando _START_ a _END_ de _TOTAL_ Elementos",
+        infoEmpty: "Mostrando 0 registros de 0 registros encontrados",
         paginate: {
           next: "<i class='ti-arrow-right'></i>",
           previous: "<i class='ti-arrow-left'></i>",
@@ -37,35 +37,41 @@ function listar(){
       columnDefs: [{ visible: false }],
       responsive: true,
       searching: true,
-      "ajax":{
-        "url":"producto/refresh",
-        "type":"GET",
-        "dataSrc":""
-    },
-    "columns":[
-      {"data":"N°"},
-      {"data":"CODIGO"},
-      {"data":"PRODUCTO"},
-      {"data":"MARCA"},
-      {"data":"STK_MIN"},
-      {"data":"STOCK"},
-      {"data":"PRECIO_MAYOR"},
-      {"data":"PRECIO_MENOR"},
-      {"data":"CATEGORIA"},
-      {   "data": null,
-                render: function(data, type, row){
-                    return ` <div class="action_btns d-flex">
-                    <a href="javascript:void(0)" onclick="enviarData(`+data['ID_PRODUCTO']+`);" class="action_btn mr_10 edit">
+      ajax: {
+        url: "producto/refresh",
+        type: "GET",
+        dataSrc: "",
+      },
+      columns: [
+        { data: "N°" },
+        { data: "CODIGO" },
+        { data: "PRODUCTO" },
+        { data: "MARCA" },
+        { data: "STK_MIN" },
+        { data: "STOCK" },
+        { data: "PRECIO_MAYOR" },
+        { data: "PRECIO_MENOR" },
+        { data: "CATEGORIA" },
+        {
+          data: null,
+          render: function (data, type, row) {
+            return (
+              ` <div class="action_btns d-flex">
+                    <a href="javascript:void(0)" onclick="enviarData(` +
+              data["ID_PRODUCTO"] +
+              `);" class="action_btn mr_10 edit">
                       <i class="far fa-edit"></i>
                     </a>
-                    <a href="javascript:void(0)"  onclick=eliminarData(`+data['ID_PRODUCTO']+`) class="action_btn del">
+                    <a href="javascript:void(0)"  onclick=eliminarData(` +
+              data["ID_PRODUCTO"] +
+              `) class="action_btn del">
                       <i class="fas fa-trash"></i>
                     </a>
                   </div>`
-                }
-              
-            }
-    ]
+            );
+          },
+        },
+      ],
     });
   }
 }

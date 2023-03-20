@@ -1,24 +1,32 @@
 
-        <div class="main_content_iner ">
-            <div class="container-fluid p-0">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="white_card card_height_100 mb_30">
-                            <div class="white_card_header">
-                                <div class="box_header m-0">
-                                    <a href="<?=URL?>producto/ExportarExcelProducto" class="btn btn-success btn-sm"> <i class="fas fa-file-excel"></i> Exportar</a>
-                                    <button class="btn btn-primary text-light btn-sm" data-bs-toggle="modal"
-                                             data-bs-target="#modalAgregar" id="nuevo" ><i class="fas fa-plus" ></i> Nuevo</button>
-                                </div>
-                            </div>
-                            <div class="white_card_body">
-                                <div class="QA_section">
-            
-                                    <div class="QA_table mb_30" >
-                                        <table class="table lms_table_active" id="tabla">
-                                          <thead>
-                                            <tr>
-                                              <th scope="col">N°</th>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+   
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+        <a href="<?=URL?>marca/ExportarExcelMarca" class="btn btn-success btn-sm rounded-0"> <i class="fas fa-file-excel"></i>  Exportar</a>
+
+          <div class="card-tools">
+          <button type="button" class="btn btn-primary btn-sm rounded-0" data-toggle="modal" data-target="#modalAgregar">
+          <i class="fas fa-plus"></i> Agregar
+                </button>
+          <!--  <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+              <i class="fas fa-times"></i>
+            </button>
+            --->
+          </div>
+        </div>
+        <div class="card-body">
+         <table class="table table-bordered table-hover table-sm " id="tblRegistros"> 
+          <thead class=bg-danger>
+            <tr>
+             <th scope="col">N°</th>
                                               <th scope="col">CODIGO</th>
                                               <th scope="col">PRODUCTO</th>
                                               <th scope="col">MARCA</th>
@@ -28,31 +36,34 @@
                                               <th scope="col">P.MENOR</th>
                                               <th scope="col">CATEGORIA</th>
                                               <th scope="col">OPCIONES</th>
-                                            </tr>
-                                          </thead>
-                                          <tbody id="producto">
-                                        
-                                          </tbody>
-                                        </table>
-                                       
-                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
+            </tr>
+          </thead>
+         </table>
+        </div>
+        <!-- /.card-body -->
        
-     <div class="modal fade " data-bs-backdrop="static" data-bs-keyboard="false"
-          id="modalAgregar"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="exampleModalCenterTitle"
-          aria-hidden="true"    >
-      <div class="modal-dialog  modal-lg" role="document">
-        <form action="" method="POST" id="frmRegistro">
+        <!-- /.card-footer-->
+      </div>
+      <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <div class="modal fade" id="modalAgregar">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Marca</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              
+            <form action="" method="POST" id="frmRegistro">
         <div class="modal-content">
           <div class="modal-header ">
             <h5 class="modal-title " id="exampleModalLongTitle text-uppercase  fw-bold">Registro productos</h5>
@@ -173,17 +184,25 @@
             <button type="submit" class="btn btn-primary btn-sm" id="btnGuardar"><i class="fas fa-save"></i> Guardar</button>
           </div>
           </form>
+
+              
+
+
+
+
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-danger btn-sm rounded-0" data-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
+              <button type="button" class="btn btn-primary btn-sm rounded-0" id="btnGuardar"><i class="fas fa-save"></i> Guardar</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
         </div>
+        <!-- /.modal-dialog -->
       </div>
-    </div>
+      <!-- /.modal -->
 
-   
-
-        <script src="<?php URL?>public/js/jquery1-3.4.1.min.js"></script>
-        <script src="<?php URL?>views/producto/js/producto.js"></script>
-
+     
        
-
-
-
-   
+  <script src="<?=URL?>public/plugins/jquery/jquery.min.js"></script>
+        <script src="<?php URL?>views/producto/js/producto.js"></script>

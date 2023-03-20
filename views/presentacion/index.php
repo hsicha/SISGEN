@@ -1,68 +1,63 @@
 
-        <div class="main_content_iner ">
-            <div class="container-fluid p-0">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="white_card card_height_100 mb_30">
-                            <div class="white_card_header">
-                                <div class="box_header m-0">
-                                    <a href="<?=URL?>presentacion/ExportarExcelPresentacion" class="btn btn-success btn-sm"> <i class="fas fa-file-excel"></i> Exportar</a>
-                                    <button class="btn btn-primary text-light btn-sm" data-bs-toggle="modal"
-                                             data-bs-target="#modalAgregar" ><i class="fas fa-plus" ></i> Nuevo</button>
-                                </div>
-                            </div>
-                            <div class="white_card_body">
-                                <div class="QA_section">
-            
-                                    <div class="QA_table mb_30">
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+   
 
-                                        <table class="table lms_table_active3 text-center" id="tabla">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col" >N°</th>
-                                                    <th scope="col" >Presentación</th>
-                                                    <th scope="col" >Opciones</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody >
-                                               
-                                           
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Main content -->
+    <section class="content">
 
-        <div
-      class="modal fade"
-      id="modalAgregar"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header ">
-            <h5 class="modal-title " id="exampleModalLongTitle">Registro Presentación</h5>
-            <button
-              type="button"
-              class="close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+        <a href="<?=URL?>presentacion/ExportarExcelPresentacion" class="btn btn-success btn-sm rounded-0"> <i class="fas fa-file-excel"></i>  Exportar</a>
+
+          <div class="card-tools">
+          <button type="button" class="btn btn-primary btn-sm rounded-0" data-toggle="modal" data-target="#modalAgregar">
+          <i class="fas fa-plus"></i> Agregar
+                </button>
+          <!--  <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+              <i class="fas fa-times"></i>
             </button>
+            --->
           </div>
-          <div class="modal-body">
-            <p>
-            <!----aca va el formulario de registro---->
-            <form  method="POST" id="frmRegistro">
+        </div>
+        <div class="card-body">
+         <table class="table table-bordered table-hover table-sm " id="tblRegistros"> 
+          <thead class=bg-danger>
+            <tr>
+             
+              <th scope="col" >N°</th>
+              <th scope="col" >Presentación</th>
+              <th scope="col" >Opciones</th>
+
+            </tr>
+          </thead>
+         </table>
+        </div>
+        <!-- /.card-body -->
+       
+        <!-- /.card-footer-->
+      </div>
+      <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <div class="modal fade" id="modalAgregar">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Marca</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              
+              <form  method="POST" id="frmRegistro">
                 <input type="hidden" id="idPresentacion" name="idPresentacion">
                     <div class="mb-3">
                       <label class="form-label" for="exampleInputEmail1"
@@ -81,25 +76,26 @@
                   
                   </form>
 
-            <!----fin del formulario de registro---->
-            </p>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-danger btn-sm"
-              data-bs-dismiss="modal"
-            >
-            <i class="fas fa-window-close"></i> Cancelar
-            </button>
-            <button type="button" class="btn btn-primary btn-sm" id="btnGuardar"><i class="fas fa-save"></i> Guardar</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
-        <script src="<?php URL?>public/js/jquery1-3.4.1.min.js"></script>
-        <script src="<?php URL?>views/presentacion/js/presentacion.js"></script>
+
+
+
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-danger btn-sm rounded-0" data-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
+              <button type="button" class="btn btn-primary btn-sm rounded-0" id="btnGuardar"><i class="fas fa-save"></i> Guardar</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+
+     
+       
+  <script src="<?=URL?>public/plugins/jquery/jquery.min.js"></script>
+             <script src="<?php URL?>views/presentacion/js/presentacion.js"></script>
 
        
 
